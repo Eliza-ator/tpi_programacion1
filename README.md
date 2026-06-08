@@ -1,5 +1,5 @@
 # tpi_programacion1
-Trabajo Prá# Gestión de Datos de Países en Python
+Gestión de Datos de Países en Python
 
 **Trabajo Práctico Integrador — Programación 1**
 Tecnicatura Universitaria en Programación | UTN — TUP a Distancia
