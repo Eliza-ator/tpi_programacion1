@@ -23,9 +23,14 @@ Lee los datos desde un archivo CSV y ofrece un menú interactivo con las siguien
 
 ```
 TPI_Paises/
-├── main.py        # Programa principal
-├── paises.csv     # Dataset base con 24 países
-└── README.md      # Este archivo
+├── README.md                        # Este archivo
+├── config.py                        # Constantes globales del sistema
+├── main.py                          # Programa principal
+├── módulo_crud.py                   # Operaciones CRUD sobre países
+├── módulo_csv.py                    # Lectura y escritura del archivo CSV
+├── módulos_filtros.py               # Búsqueda y filtros de países
+├── módulo_orden_estadísticas.py     # Ordenamientos y estadísticas
+└── paises.csv                       # Dataset base con 24 países
 ```
 
 ---
