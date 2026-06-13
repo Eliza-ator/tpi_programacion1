@@ -1,8 +1,5 @@
-# ============================================================
 # modulo_csv.py — Lectura y escritura del archivo CSV
 # TPI - Gestión de Datos de Países en Python
-# Tecnicatura Universitaria en Programación - UTN
-# ============================================================
 
 
 def leer_csv(ruta):
@@ -22,7 +19,7 @@ def leer_csv(ruta):
         archivo.close()
 
         if len(lineas) < 2:
-            print("⚠ El archivo CSV está vacío o solo tiene encabezado.")
+            print("El archivo CSV está vacío o solo tiene encabezado.")
             return paises
 
         # Salteamos la primera línea (encabezado)
@@ -35,7 +32,7 @@ def leer_csv(ruta):
 
             # Validamos que tenga exactamente 4 campos
             if len(partes) != 4:
-                print(f"⚠ Línea {numero} ignorada (se esperaban 4 campos): {linea}")
+                print(f"Línea {numero} ignorada (se esperaban 4 campos): {linea}")
                 continue
 
             nombre     = partes[0].strip()
@@ -51,12 +48,12 @@ def leer_csv(ruta):
 
             # Validamos que no haya campos de texto vacíos
             if not nombre or not continente:
-                print(f"⚠ Línea {numero} ignorada (campos vacíos): {linea}")
+                print(f"Línea {numero} ignorada (campos vacíos): {linea}")
                 continue
 
             # Validamos que los números sean positivos
             if poblacion <= 0 or superficie <= 0:
-                print(f"⚠ Línea {numero} ignorada (población/superficie deben ser positivos): {linea}")
+                print(f"Línea {numero} ignorada (población/superficie deben ser positivos): {linea}")
                 continue
 
             pais = {
@@ -68,7 +65,7 @@ def leer_csv(ruta):
             paises.append(pais)
 
     except FileNotFoundError:
-        print(f"✖ No se encontró el archivo '{ruta}'.")
+        print(f"No se encontró el archivo '{ruta}'.")
         return None
 
     return paises
@@ -92,5 +89,5 @@ def guardar_csv(ruta, paises):
         archivo.close()
         return True
     except Exception as e:
-        print(f"✖ Error al guardar el archivo: {e}")
+        print(f"Error al guardar el archivo: {e}")
         return False
