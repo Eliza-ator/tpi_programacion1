@@ -1,8 +1,6 @@
-# ============================================================
 # modulo_crud.py — Operaciones CRUD sobre países
 # TPI - Gestión de Datos de Países en Python
-# Tecnicatura Universitaria en Programación - UTN
-# ============================================================
+
 
 from config import ARCHIVO_CSV, CONTINENTES_VALID
 from modulo_csv import guardar_csv
@@ -27,17 +25,17 @@ def pedir_entero(mensaje, minimo=1, permitir_vacio=False, valor_actual=None):
             return valor_actual
 
         if entrada == "":
-            print("⚠ Este campo no puede estar vacío.")
+            print("Error: este campo no puede estar vacío.")
             continue
 
         try:
             numero = int(entrada)
             if numero < minimo:
-                print(f"⚠ El valor debe ser mayor o igual a {minimo}.")
+                print(f"Error: el valor debe ser igual o mayor a {minimo}.")
                 continue
             return numero
         except ValueError:
-            print("⚠ Ingresá un número entero válido (sin letras ni símbolos).")
+            print("Error: ingresá un número entero válido (sin letras ni símbolos).")
 
 
 def mostrar_paises(paises):
@@ -47,7 +45,7 @@ def mostrar_paises(paises):
     Los números se muestran con separador de miles para mejor legibilidad.
     """
     if not paises:
-        print("\n⚠ No hay países para mostrar.")
+        print("\nError: no hay países para mostrar.")
         return
 
     print("\n" + "="*65)
@@ -96,11 +94,11 @@ def agregar_pais(paises):
     while True:
         continente = input("Continente: ").strip()
         if not continente:
-            print("⚠ El continente no puede estar vacío.")
+            print("Error: el continente no puede estar vacío.")
             continue
         encontrado = next((c for c in CONTINENTES_VALID if c.lower() == continente.lower()), None)
         if not encontrado:
-            print(f"⚠ Continente no reconocido. Opciones: {', '.join(CONTINENTES_VALID)}")
+            print(f"Error: continente no reconocido. Opciones: {', '.join(CONTINENTES_VALID)}")
             continue
         continente = encontrado
         break
@@ -115,9 +113,9 @@ def agregar_pais(paises):
     paises.append(nuevo_pais)
 
     if guardar_csv(ARCHIVO_CSV, paises):
-        print(f"\n✔ País '{nombre}' agregado y guardado correctamente.")
+        print(f"\nPaís '{nombre}' agregado y guardado correctamente.")
     else:
-        print("⚠ País agregado en memoria pero no se pudo guardar en el archivo.")
+        print("Error: país agregado en memoria pero no se pudo guardar en el archivo.")
 
 
 def actualizar_pais(paises):
@@ -130,12 +128,12 @@ def actualizar_pais(paises):
     print("\n--- ACTUALIZAR PAÍS ---")
 
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("Error: no hay países cargados.")
         return
 
     nombre = input("Nombre del país a actualizar: ").strip()
     if not nombre:
-        print("⚠ El nombre no puede estar vacío.")
+        print("Error: el nombre no puede estar vacío.")
         return
 
     pais_encontrado = next(
@@ -143,7 +141,7 @@ def actualizar_pais(paises):
     )
 
     if pais_encontrado is None:
-        print(f"⚠ No se encontró el país '{nombre}'.")
+        print(f"Error: no se encontró el país '{nombre}'.")
         return
 
     print(f"\nDatos actuales de {pais_encontrado['nombre']}:")
@@ -163,6 +161,6 @@ def actualizar_pais(paises):
     )
 
     if guardar_csv(ARCHIVO_CSV, paises):
-        print(f"\n✔ País '{pais_encontrado['nombre']}' actualizado correctamente.")
+        print(f"\nPaís '{pais_encontrado['nombre']}' actualizado correctamente.")
     else:
-        print("⚠ Cambios aplicados en memoria pero no se pudo guardar en el archivo.")
+        print("Error: cambios aplicados en memoria pero no se pudo guardar en el archivo.")
