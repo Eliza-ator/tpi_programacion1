@@ -1,8 +1,6 @@
-# ============================================================
 # modulo_orden_estadisticas.py — Ordenamientos y estadísticas
 # TPI - Gestión de Datos de Países en Python
-# Tecnicatura Universitaria en Programación - UTN
-# ============================================================
+
 
 from modulo_crud import mostrar_paises
 
@@ -17,7 +15,7 @@ def ordenar_paises(paises):
     print("\n--- ORDENAR PAÍSES ---")
 
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
 
     # --- Criterio ---
@@ -26,7 +24,7 @@ def ordenar_paises(paises):
         criterio = input("Elegí una opción (1-3): ").strip()
         if criterio in ("1", "2", "3"):
             break
-        print("⚠ Opción inválida. Ingresá 1, 2 o 3.")
+        print("Opción inválida. Ingresá 1, 2 o 3.")
 
     # --- Dirección ---
     print("Dirección:    1. Ascendente (A→Z / menor→mayor)   2. Descendente (Z→A / mayor→menor)")
@@ -34,7 +32,7 @@ def ordenar_paises(paises):
         direccion = input("Elegí una opción (1-2): ").strip()
         if direccion in ("1", "2"):
             break
-        print("⚠ Opción inválida. Ingresá 1 o 2.")
+        print("Opción inválida. Ingresá 1 o 2.")
 
     invertir = (direccion == "2")
 
@@ -77,7 +75,7 @@ def mostrar_estadisticas(paises):
     print("\n--- ESTADÍSTICAS ---")
 
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
 
     total = len(paises)
