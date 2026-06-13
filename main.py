@@ -1,9 +1,6 @@
-# ============================================================
 # main.py — Punto de entrada del programa
 # TPI - Gestión de Datos de Países en Python
-# Tecnicatura Universitaria en Programación - UTN
-# Materia  : Programación 1
-# ============================================================
+
 
 from config import ARCHIVO_CSV
 from modulo_csv import leer_csv
@@ -49,10 +46,10 @@ def main():
     paises = leer_csv(ARCHIVO_CSV)
 
     if paises is None:
-        print(f"✖ No se pudo cargar '{ARCHIVO_CSV}'. Verificá que el archivo exista.")
+        print(f"No se pudo cargar '{ARCHIVO_CSV}'. Verificá que el archivo exista.")
         return
 
-    print(f"✔ {len(paises)} países cargados correctamente.\n")
+    print(f"{len(paises)} países cargados correctamente.\n")
 
     while True:
         mostrar_menu()
@@ -68,12 +65,11 @@ def main():
         elif opcion == "8": ordenar_paises(paises)
         elif opcion == "9": mostrar_estadisticas(paises)
         elif opcion == "0":
-            print("\n¡Hasta luego! 👋")
+            print("\n¡Gracias, vuelva pronto!")
             break
         else:
-            print("⚠ Opción inválida. Ingresá un número del 0 al 9.")
+            print("Eroro: opción incorrecta. Ingresá un número del 0 al 9.")
 
 
-# --- Punto de entrada del programa ---
 if __name__ == "__main__":
     main()
