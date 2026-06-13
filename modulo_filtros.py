@@ -1,8 +1,6 @@
-# ============================================================
 # modulo_filtros.py — Búsqueda y filtros de países
 # TPI - Gestión de Datos de Países en Python
-# Tecnicatura Universitaria en Programación - UTN
-# ============================================================
+
 
 from config import CONTINENTES_VALID
 from modulo_crud import mostrar_paises, pedir_entero
@@ -18,18 +16,18 @@ def buscar_por_nombre(paises):
     print("\n--- BUSCAR POR NOMBRE ---")
 
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
 
     texto = input("Nombre o parte del nombre a buscar: ").strip()
     if not texto:
-        print("⚠ El texto de búsqueda no puede estar vacío.")
+        print("El texto de búsqueda no puede estar vacío.")
         return
 
     resultados = [p for p in paises if texto.lower() in p["nombre"].lower()]
 
     if not resultados:
-        print(f"\n⚠ No se encontraron países con '{texto}'.")
+        print(f"\No se encontraron países con '{texto}'.")
         return
 
     print(f"\nResultados para '{texto}' ({len(resultados)} encontrado/s):")
@@ -46,7 +44,7 @@ def filtrar_por_continente(paises):
     print("\n--- FILTRAR POR CONTINENTE ---")
 
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
 
     print("Continentes disponibles:", ", ".join(CONTINENTES_VALID))
@@ -58,7 +56,7 @@ def filtrar_por_continente(paises):
             return
         encontrado = next((c for c in CONTINENTES_VALID if c.lower() == continente.lower()), None)
         if not encontrado:
-            print(f"⚠ Continente no reconocido. Opciones: {', '.join(CONTINENTES_VALID)}")
+            print(f"Continente no reconocido. Opciones: {', '.join(CONTINENTES_VALID)}")
             continue
         continente = encontrado
         break
@@ -66,7 +64,7 @@ def filtrar_por_continente(paises):
     resultados = [p for p in paises if p["continente"] == continente]
 
     if not resultados:
-        print(f"\n⚠ No se encontraron países en '{continente}'.")
+        print(f"\nNo se encontraron países en '{continente}'.")
         return
 
     print(f"\nPaíses en {continente} ({len(resultados)} encontrado/s):")
@@ -90,14 +88,14 @@ def filtrar_por_rango(paises, campo):
     while True:
         maximo = pedir_entero(f"{etiqueta.capitalize()} máxima: ", minimo=0)
         if maximo < minimo:
-            print(f"⚠ El máximo ({maximo:,}) no puede ser menor que el mínimo ({minimo:,}).")
+            print(f"El máximo ({maximo:,}) no puede ser menor que el mínimo ({minimo:,}).")
             continue
         break
 
     resultados = [p for p in paises if minimo <= p[campo] <= maximo]
 
     if not resultados:
-        print(f"\n⚠ No hay países con {etiqueta} entre {minimo:,} y {maximo:,}.")
+        print(f"\nNo hay países con {etiqueta} entre {minimo:,} y {maximo:,}.")
         return
 
     print(f"\nPaíses con {etiqueta} entre {minimo:,} y {maximo:,} ({len(resultados)} encontrado/s):")
@@ -108,7 +106,7 @@ def filtrar_por_poblacion(paises):
     """Filtra países dentro de un rango de población ingresado por el usuario."""
     print("\n--- FILTRAR POR RANGO DE POBLACIÓN ---")
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
     filtrar_por_rango(paises, "poblacion")
 
@@ -117,6 +115,6 @@ def filtrar_por_superficie(paises):
     """Filtra países dentro de un rango de superficie ingresado por el usuario."""
     print("\n--- FILTRAR POR RANGO DE SUPERFICIE ---")
     if not paises:
-        print("⚠ No hay países cargados.")
+        print("No hay países cargados.")
         return
     filtrar_por_rango(paises, "superficie")
